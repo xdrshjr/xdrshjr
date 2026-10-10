@@ -84,10 +84,27 @@ API key. 本地优先：待办 / 记账 / 备忘 / AI 智能体，数据仅存�
 
 | Project | What it does | Stars |
 | --- | --- | --- |
-| 🎬 [AragonMovie](https://github.com/xdrshjr/AragonMovie) | 基于 Python 与多 Agent 架构的 AI 短剧自动生成工具，统一 CLI 管理项目与出片 · multi-agent AI short-drama generator | [![stars](https://img.shields.io/github/stars/xdrshjr/AragonMovie?style=social)](https://github.com/xdrshjr/AragonMovie/stargazers) |
-| 📕 [RedNote-AutoGen](https://github.com/xdrshjr/RedNote-AutoGen) | 小红书文案 + 配图自动生成工具 · automated Xiaohongshu post & image generator | [![stars](https://img.shields.io/github/stars/xdrshjr/RedNote-AutoGen?style=social)](https://github.com/xdrshjr/RedNote-AutoGen/stargazers) |
-| 🖼️ [ZImage-WebUI](https://github.com/xdrshjr/ZImage-WebUI) | 完整的 AI 图像生成系统 · a complete Z-Image generation WebUI | [![stars](https://img.shields.io/github/stars/xdrshjr/ZImage-WebUI?style=social)](https://github.com/xdrshjr/ZImage-WebUI/stargazers) |
-| 🔓 [Auto-JailBreak-Prompter](https://github.com/xdrshjr/Auto-JailBreak-Prompter) | translates a prompt into its jailbreak version, for red-team research | [![stars](https://img.shields.io/github/stars/xdrshjr/Auto-JailBreak-Prompter?style=social)](https://github.com/xdrshjr/Auto-JailBreak-Prompter/stargazers) |
+| 🎬 [AragonMovie](https://github.com/xdrshjr/AragonMovie) | 基于 Python 与多 Agent 架构的 AI 短剧自动生成工具，统一 CLI 管理项目与出片 · multi-agent AI short-drama generator | [![stars](https://img.shields.io/github/stars/xdrshjr/AragonMovie?style=social)](https://github.com/xdrshjr/AragonMovie) |
+| 📕 [RedNote-AutoGen](https://github.com/xdrshjr/RedNote-AutoGen) | 小红书文案 + 配图自动生成工具 · automated Xiaohongshu post & image generator | [![stars](https://img.shields.io/github/stars/xdrshjr/RedNote-AutoGen?style=social)](https://github.com/xdrshjr/RedNote-AutoGen) |
+| 🖼️ [ZImage-WebUI](https://github.com/xdrshjr/ZImage-WebUI) | 完整的 AI 图像生成系统 · a complete Z-Image generation WebUI | [![stars](https://img.shields.io/github/stars/xdrshjr/ZImage-WebUI?style=social)](https://github.com/xdrshjr/ZImage-WebUI) |
+| 🔓 [Auto-JailBreak-Prompter](https://github.com/xdrshjr/Auto-JailBreak-Prompter) | translates a prompt into its jailbreak version, for red-team research | [![stars](https://img.shields.io/github/stars/xdrshjr/Auto-JailBreak-Prompter?style=social)](https://github.com/xdrshjr/Auto-JailBreak-Prompter) |
+
+---
+
+## ❓ Quick answers
+
+**What is AragonAgent?**
+An open-source (MIT) AI coding agent for the terminal — a Claude Code / Codex alternative you can run
+with `npm i -g @aragon-agent/cli`, embed as a TypeScript library (`@aragon-agent/core`), or drive from CI
+via `aragon exec`. It works with Anthropic, OpenAI, Google, or any OpenAI-compatible API key you already have.
+
+**Is it free?**
+Yes — MIT-licensed, runs on Windows / macOS / Linux with Node ≥ 18. You only pay your own model provider.
+
+**What else does Rui build?**
+AragonTask (offline-first Android todos / ledger / memos), AragonMovie (multi-agent AI short-drama video
+generator), RedNote-AutoGen (Xiaohongshu content automation) and ZImage-WebUI (AI image generation) — all
+open source on this profile.
 
 ---
 
