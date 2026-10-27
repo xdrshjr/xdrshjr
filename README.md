@@ -1,16 +1,31 @@
 <h1 align="center">Hi, I'm Rui 👋</h1>
 
 <p align="center">
-  I build AI agents, self-hosted infrastructure, and small, fast tools that respect your data.<br />
-  <sub>AI Agent / 自托管网关 / 终端工具 / 本地优先应用 — 数据永远只属于你。</sub>
+  I build AI agents, local-first creative tools, self-hosted infrastructure, and small, fast apps that respect your data.<br />
+  <sub>AI Agent / 本地优先 AI 视频剪辑 / 自托管网关 / 终端工具 — 数据永远只属于你。</sub>
 </p>
 
 <p align="center">
-  🔭 Currently building <strong><a href="https://www.npmjs.com/package/@aragon-agent/cli">AragonAgent</a></strong>
-  and <strong><a href="https://github.com/xdrshjr/AragonRouter">AragonRouter</a></strong> ·
+  🔭 Building <strong><a href="https://github.com/xdrshjr/Ecliptrix">Ecliptrix</a></strong> ·
+  <strong><a href="https://github.com/xdrshjr/AragonRouter">AragonRouter</a></strong> ·
+  <strong><a href="https://www.npmjs.com/package/@aragon-agent/cli">AragonAgent</a></strong> <sub>(npm)</sub> ·
   💼 <a href="https://github.com/xdrshjr?tab=repositories">All repositories</a> ·
   ✉️ Reach me via issues & discussions
 </p>
+
+---
+
+## 🧭 At a glance
+
+Three projects, three different jobs — pick the one that matches what you are trying to do.
+
+| Project | What it is | Best for | Stack | Runs on |
+| --- | --- | --- | --- | --- |
+| ⌨️ **[AragonAgent](https://www.npmjs.com/package/@aragon-agent/cli)** | Terminal **AI coding agent**, shipped as `@aragon-agent/cli` + `@aragon-agent/core` | Running or embedding a Claude Code / Codex-style agent | TypeScript · Node ≥ 18 | Windows · macOS · Linux |
+| 🎬 **[Ecliptrix](https://github.com/xdrshjr/Ecliptrix)** | Open-source, local-first **AI video editor** — script → footage → voice-over → subtitles → timeline → export | Solo creators producing narrated videos without a subscription editor | Electron 33 · Next.js 15 · React 19 · FastAPI · FFmpeg · SQLite | Windows 10/11 x64 |
+| 🔀 **[AragonRouter](https://github.com/xdrshjr/AragonRouter)** | Self-hosted **dual-protocol API relay** for Anthropic + OpenAI traffic, with keys, logs and usage stats | Giving many clients one endpoint while keeping upstream keys yours | Next.js 15 · TypeScript · `node:sqlite` | Node ≥ 22.5 |
+
+<sub>Editing video → **Ecliptrix** · relaying model API traffic → **AragonRouter** · working in the terminal → **AragonAgent**.</sub>
 
 ---
 
@@ -41,6 +56,78 @@ zero-coupling TypeScript engine it runs on.
   <code>npm i -g @aragon-agent/cli</code> &nbsp;→&nbsp; <code>aragon</code> &nbsp;·&nbsp;
   <a href="https://www.npmjs.com/package/@aragon-agent/cli"><code>@aragon-agent/cli</code> →</a> &nbsp;·&nbsp;
   <a href="https://www.npmjs.com/package/@aragon-agent/core"><code>@aragon-agent/core</code> →</a>
+</p>
+
+---
+
+## 🎬 Ecliptrix — local-first AI video editor for Windows
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/Ecliptrix">
+    <img src="https://raw.githubusercontent.com/xdrshjr/Ecliptrix/main/public/screenshot-01.png" width="880"
+         alt="Ecliptrix AI video editor workspace: a script panel of numbered narration segments on the left, a 16:9 composited canvas preview in the centre, and a searchable material library of video clips on the right" />
+  </a>
+</p>
+
+**[Ecliptrix](https://github.com/xdrshjr/Ecliptrix)** (灵蚀创影) is an **open-source, local-first AI video
+editor desktop app for Windows**. Write the script, and an agent finds the footage, synthesises the
+voice-over, aligns the subtitles and cuts the timeline — then exports the finished cut with FFmpeg.
+The database, media library, generated audio and project files never leave your own disk.
+写剧本，Agent 自己找素材、配音、对齐字幕、剪时间线并导出成片；数据库、素材库与工程文件全部留在本机。
+
+| | |
+| --- | --- |
+| **What it is** | AI video editing desktop app — script → footage → voice-over → subtitles → timeline → FFmpeg export |
+| **Form factor** | Windows 10/11 x64 desktop app (NSIS installer built by `electron-builder`) |
+| **Runs on** | Electron 33 shell + Next.js 15 / React 19 renderer + a local FastAPI service (Python 3.10+), both bound to `127.0.0.1` |
+| **Where data lives** | Local SQLite file and filesystem (`%APPDATA%\Ecliptrix`) — no account, no login, nothing uploaded to the project |
+| **AI models** | Bring your own key: any OpenAI-compatible endpoint (Qwen, Claude, GPT, GLM, DeepSeek) in separate chat / fast / video-cut / vision slots |
+| **Hardware** | FFmpeg + OpenCV, CPU only — no GPU required |
+| **Languages** | English and Chinese UI |
+| **License** | ISC — open source, commercial use allowed, no subscription or feature gate |
+
+- 🎞️ **Multi-track timeline** — video, image, audio and subtitle tracks with trimming, gaps, overlap detection, 2D/3D camera motion (Ken Burns) and one-step undo
+- 🖼️ **Canvas compositor preview** — the compositor is the *only* preview path, so what you see is what the exporter renders
+- 🤖 **An agent that actually edits** — it publishes a plan, asks one question at each decision fork, runs 15 deterministic pre-export checks and can visually review frames of its own output; every timeline action is undoable
+- 🗣️ **Voice and subtitles** — Volcano Engine TTS with 100+ voices, batch synthesis, per-segment subtitle styling and overflow re-measured with the exporter's own limits
+- 🎥 **Generation and research** — Pexels / Unsplash / Freesound / Tavily search cached locally, ByteDance ARK video and Seedream image generation written straight into the material library, `yt-dlp` ingestion
+- ⚙️ **Local by default** — no login, no RBAC, no database server, no migration step; SQLite is created on first launch
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/Ecliptrix">
+    <img src="https://raw.githubusercontent.com/xdrshjr/Ecliptrix/main/public/screenshot-02.png" width="760"
+         alt="Ecliptrix multi-track timeline: main visual video track, extra image track, TTS voice-over clips with real durations, background music waveform and a dedicated subtitle track, with the agent drawer reporting what it did" />
+  </a><br />
+  <sub>Multi-track timeline — main visual, image, TTS voice-over, background music and subtitle tracks in one cut,
+  with the agent drawer reporting each step.</sub>
+</p>
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/Ecliptrix">
+    <img src="https://img.shields.io/github/stars/xdrshjr/Ecliptrix?style=social" alt="Ecliptrix stars" />
+  </a>
+  <a href="https://github.com/xdrshjr/Ecliptrix">
+    <img src="https://img.shields.io/badge/license-ISC-blue" alt="License: ISC" />
+  </a>
+  <a href="https://github.com/xdrshjr/Ecliptrix">
+    <img src="https://img.shields.io/badge/platform-Windows%2010%2F11%20x64-0078D6" alt="Platform: Windows 10/11 x64" />
+  </a>
+  <a href="https://github.com/xdrshjr/Ecliptrix">
+    <img src="https://img.shields.io/badge/Electron-33-47848F" alt="Electron 33" />
+  </a>
+  <a href="https://github.com/xdrshjr/Ecliptrix">
+    <img src="https://img.shields.io/badge/Next.js-15-black" alt="Next.js 15" />
+  </a>
+  <a href="https://github.com/xdrshjr/Ecliptrix">
+    <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB" alt="Python 3.10+" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/Ecliptrix">Read the docs →</a> &nbsp;·&nbsp;
+  <a href="https://github.com/xdrshjr/Ecliptrix/blob/main/README.zh-CN.md">中文文档 →</a> &nbsp;·&nbsp;
+  <a href="https://github.com/xdrshjr/Ecliptrix#faq">FAQ →</a><br />
+  <sub>Needs Node 18.18+, Python 3.10+ and FFmpeg 4+ — <code>npm install</code>, then <code>cd desktop &amp;&amp; npm run dev</code></sub>
 </p>
 
 ---
@@ -134,13 +221,32 @@ API key. 本地优先：待办 / 记账 / 备忘 / AI 智能体，数据仅存�
 
 ## ❓ Quick answers
 
+**What is Ecliptrix?**
+Ecliptrix (灵蚀创影) is an open-source, local-first AI video editor desktop app for Windows. You give it a
+script; it searches stock footage, generates or downloads what is missing, synthesises the voice-over,
+aligns subtitles per segment, composes a multi-track timeline and exports the finished cut with FFmpeg. It
+ships as one Electron app that boots a local FastAPI service and a Next.js renderer on `127.0.0.1` — the
+SQLite database, media library and project files stay on your disk under `%APPDATA%\Ecliptrix`.
+
+**Is Ecliptrix free? Does it need an account or a GPU?**
+Free and open source under the ISC license, with commercial use allowed and no subscription, seat count or
+feature gate. No account, no login, no database server, no migration step. No GPU either: composition runs
+through FFmpeg on the CPU, so a normal laptop is enough and heavier exports simply take longer. You bring
+your own model, TTS and stock-footage keys — any OpenAI-compatible endpoint works.
+
+**How is Ecliptrix different from CapCut, Premiere or Descript?**
+It is open source and local-first — project files, media, database and model keys live on your machine — and
+an autonomous agent, not just an assistant panel, can carry a script through footage search, voice-over,
+subtitle alignment and export. It is deliberately a single-user desktop tool: no team collaboration, no
+cloud review links, no browser editor.
+
 **What is AragonAgent?**
 An MIT-licensed AI coding agent for the terminal, shipped as two npm packages — a Claude Code / Codex
 alternative you can run with `npm i -g @aragon-agent/cli`, embed as a TypeScript library
 (`@aragon-agent/core`), or drive from CI via `aragon exec`. It works with Anthropic, OpenAI, Google, or any
 OpenAI-compatible API key you already have.
 
-**Is it free?**
+**Is AragonAgent free?**
 Yes — MIT-licensed, runs on Windows / macOS / Linux with Node ≥ 18. You only pay your own model provider.
 
 **What is AragonRouter?**
