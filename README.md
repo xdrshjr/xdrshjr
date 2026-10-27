@@ -1,12 +1,13 @@
 <h1 align="center">Hi, I'm Rui 👋</h1>
 
 <p align="center">
-  I build AI agents, local-first creative tools, self-hosted infrastructure, and small, fast apps that respect your data.<br />
-  <sub>AI Agent / 本地优先 AI 视频剪辑 / 自托管网关 / 终端工具 — 数据永远只属于你。</sub>
+  I build AI agents, local-first creative tools, quant trading workbenches, self-hosted infrastructure, and small, fast apps that respect your data.<br />
+  <sub>AI Agent / 本地优先 AI 视频剪辑 / 量化交易工作台 / 自托管网关 / 终端工具 — 数据永远只属于你。</sub>
 </p>
 
 <p align="center">
   🔭 Building <strong><a href="https://github.com/xdrshjr/Ecliptrix">Ecliptrix</a></strong> ·
+  <strong><a href="https://github.com/xdrshjr/AragonTrading">AragonTrading</a></strong> ·
   <strong><a href="https://github.com/xdrshjr/AragonRouter">AragonRouter</a></strong> ·
   <strong><a href="https://www.npmjs.com/package/@aragon-agent/cli">AragonAgent</a></strong> <sub>(npm)</sub> ·
   💼 <a href="https://github.com/xdrshjr?tab=repositories">All repositories</a> ·
@@ -17,15 +18,16 @@
 
 ## 🧭 At a glance
 
-Three projects, three different jobs — pick the one that matches what you are trying to do.
+Four projects, four different jobs — pick the one that matches what you are trying to do.
 
 | Project | What it is | Best for | Stack | Runs on |
 | --- | --- | --- | --- | --- |
 | ⌨️ **[AragonAgent](https://www.npmjs.com/package/@aragon-agent/cli)** | Terminal **AI coding agent**, shipped as `@aragon-agent/cli` + `@aragon-agent/core` | Running or embedding a Claude Code / Codex-style agent | TypeScript · Node ≥ 18 | Windows · macOS · Linux |
 | 🎬 **[Ecliptrix](https://github.com/xdrshjr/Ecliptrix)** | Open-source, local-first **AI video editor** — script → footage → voice-over → subtitles → timeline → export | Solo creators producing narrated videos without a subscription editor | Electron 33 · Next.js 15 · React 19 · FastAPI · FFmpeg · SQLite | Windows 10/11 x64 |
+| 📈 **[AragonTrading](https://github.com/xdrshjr/AragonTrading)** | Open-source, local-first **multi-strategy quant workbench** — OKX real market data, backtests, paper trading, factor mining, gated AI trading | Testing whether a strategy idea survives real data, fees and slippage before risking anything | Next.js 14 · FastAPI · Python 3.11 · Electron · SQLite · lightweight-charts | Windows · macOS · Linux · Docker |
 | 🔀 **[AragonRouter](https://github.com/xdrshjr/AragonRouter)** | Self-hosted **dual-protocol API relay** for Anthropic + OpenAI traffic, with keys, logs and usage stats | Giving many clients one endpoint while keeping upstream keys yours | Next.js 15 · TypeScript · `node:sqlite` | Node ≥ 22.5 |
 
-<sub>Editing video → **Ecliptrix** · relaying model API traffic → **AragonRouter** · working in the terminal → **AragonAgent**.</sub>
+<sub>Editing video → **Ecliptrix** · researching a trading strategy → **AragonTrading** · relaying model API traffic → **AragonRouter** · working in the terminal → **AragonAgent**.</sub>
 
 ---
 
@@ -128,6 +130,86 @@ The database, media library, generated audio and project files never leave your 
   <a href="https://github.com/xdrshjr/Ecliptrix/blob/main/README.zh-CN.md">中文文档 →</a> &nbsp;·&nbsp;
   <a href="https://github.com/xdrshjr/Ecliptrix#faq">FAQ →</a><br />
   <sub>Needs Node 18.18+, Python 3.10+ and FFmpeg 4+ — <code>npm install</code>, then <code>cd desktop &amp;&amp; npm run dev</code></sub>
+</p>
+
+---
+
+## 📈 AragonTrading — local-first quant workbench on real OKX data
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/AragonTrading">
+    <img src="https://raw.githubusercontent.com/xdrshjr/AragonTrading/main/public/aragon-trading-workstation.png" width="880"
+         alt="AragonTrading workstation: a professional candlestick chart of real OKX market data with technical indicators and buy/sell markers on the left, and a strategy / backtest / paper-trading control panel on the right" />
+  </a>
+</p>
+
+**[AragonTrading](https://github.com/xdrshjr/AragonTrading)** (阿拉贡量化) is an **open-source, local-first
+multi-strategy quantitative trading workbench**. On the left there is a professional candlestick chart; on
+the right, the strategy, backtest and paper-trading console. Every candle comes from **OKX public REST +
+WebSocket**, matching is done by the built-in SimBroker, and the strategies, factor mining and backtest engine
+all run against a local SQLite file.
+左侧专业 K 线，右侧策略 / 回测 / 模拟盘控制台；行情全部来自欧易 OKX 真实公开数据，撮合由内置 SimBroker 完成。
+
+It exists to close one specific gap: **between "I have a strategy idea" and "does this actually survive?"**
+lies a whole chain — pull real data, align the time axis, compute indicators, run matching, charge trading
+costs, plot the equity curve, compare strategies side by side. AragonTrading turns that chain into a
+workbench you can simply open.
+
+> **The rule it refuses to break:** data is either *real* or an *explicit error* — never synthetic candles
+> dressed up as market data. When OKX is unreachable the UI says so instead of drawing a pretty fake curve.
+
+| | |
+| --- | --- |
+| **What it is** | Multi-strategy quant workbench — backtests, side-by-side comparison, live paper trading, factor mining, AI trading (paper by default) |
+| **Market data** | OKX V5 public REST (historical candles) + public WebSocket (live candles / depth) |
+| **Matching** | Built-in SimBroker; OKX demo and live channels exist but sit behind explicit switches that are **off by default** |
+| **Stack** | Next.js 14 · React 18 · TypeScript 5.6 · lightweight-charts v4 · Zustand · TanStack Query — Python 3.11 · FastAPI 0.115 · SQLAlchemy 2 async · SQLite |
+| **Desktop** | Electron shell wrapping a PyInstaller backend — double-click, no Node or Python required on the target machine |
+| **Strategies** | 11 registered built-ins (5 atomic in Phase 1: long-shadow reversal, momentum breakout, dual-EMA scalper, Bollinger reversion, VWAP+RSI momentum) |
+| **Tests** | 3209 backend pytest cases (437 files) + 3030 frontend vitest cases (272 files) |
+| **Where data lives** | Local SQLite entirely (`services/quant/aragon.db`, or `%APPDATA%\aragon-desktop\aragon.db` on desktop) — no telemetry upload |
+| **License** | None yet — the repository ships no `LICENSE` file, so ask the author before reusing code |
+
+- 📊 **Real charts, not a toy** — zoom, pan, jump-to-date, scroll-back history loading, overlays for indicators, buy/sell markers and the equity curve on one canvas
+- 🧪 **Backtest → compare → paper trade in one place** — backtests walk historical candles bar by bar; live paper sessions are driven by real market data (or accelerated replay) through the *same* strategy code
+- 🚦 **Deterministic gates, not vibes** — the LLM only *proposes* a trade; consensus, risk, cost, position and pre-order re-checks are pure functions that decide, and anything unclear drops the session to `paused` with a stated reason
+- 🔬 **Factor mining loop** — candidates are produced, run through 11 hard filters, then registered as traceable assets by semantic identity
+- 🧩 **Strategies are pluggable** — adding one is a new `services/quant/app/strategies/<key>.py` with `@register_strategy` plus one import line; the engine and the API stay untouched
+- 🤖 **AI-readable by design** — the repo ships [`llms.txt`](https://github.com/xdrshjr/AragonTrading/blob/main/llms.txt), a one-page fact card for AI search and retrieval
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/AragonTrading">
+    <img src="https://img.shields.io/github/stars/xdrshjr/AragonTrading?style=social" alt="AragonTrading stars" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonTrading">
+    <img src="https://img.shields.io/badge/Next.js-14-black" alt="Next.js 14" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonTrading">
+    <img src="https://img.shields.io/badge/FastAPI-0.115-009688" alt="FastAPI 0.115" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonTrading">
+    <img src="https://img.shields.io/badge/Python-3.11-3776AB" alt="Python 3.11" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonTrading">
+    <img src="https://img.shields.io/badge/market%20data-OKX-000000" alt="Market data: OKX" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonTrading/blob/main/llms.txt">
+    <img src="https://img.shields.io/badge/llms.txt-AI%20readable-blueviolet" alt="llms.txt: AI readable" />
+  </a>
+</p>
+
+<p align="center">
+  <code>pnpm setup</code> → <code>pnpm preflight</code> → <code>pnpm dev</code><br />
+  <a href="https://github.com/xdrshjr/AragonTrading">Read the docs →</a> &nbsp;·&nbsp;
+  <a href="https://github.com/xdrshjr/AragonTrading#常见问题faq">FAQ →</a> &nbsp;·&nbsp;
+  <a href="https://github.com/xdrshjr/AragonTrading/blob/main/llms.txt">llms.txt →</a>
+</p>
+
+<p align="center">
+  <sub><b>Scope, stated plainly:</b> this is a research, validation and paper-trading tool, not a
+  set-and-forget bot holding your money. Live trading needs your own OKX keys, an explicit switch and a
+  preview card per order; backtest and paper results are <b>not</b> investment advice and say nothing about
+  future returns.</sub>
 </p>
 
 ---
@@ -239,6 +321,38 @@ It is open source and local-first — project files, media, database and model k
 an autonomous agent, not just an assistant panel, can carry a script through footage search, voice-over,
 subtitle alignment and export. It is deliberately a single-user desktop tool: no team collaboration, no
 cloud review links, no browser editor.
+
+**What is AragonTrading?**
+AragonTrading (阿拉贡量化) is an open-source, local-first multi-strategy quantitative trading workbench. A
+professional candlestick chart sits on the left, the strategy / backtest / paper-trading console on the right.
+Market data comes from OKX public REST and WebSocket — the same data your strategies are tested on — matching
+runs through the built-in SimBroker, and everything (strategies, backtests, factor mining, SQLite database)
+runs on your own machine. It covers backtests, side-by-side strategy comparison, live paper trading, a factor
+mining loop and AI trading where the model only proposes and deterministic gates decide.
+
+**Does AragonTrading trade with real money?**
+Not by default. The shipped configuration is simulation only — the built-in SimBroker matches orders and no
+live order channel is wired up. Live trading is an opt-in chain: your own OKX credentials, an explicit
+`LIVE_TRADING_ENABLED` switch, and a preview card (account, side, size, price, estimated margin) before every
+submission. Model output never becomes an order on its own; consensus, risk, cost and position checks are pure
+functions that must pass first. Backtest and paper-trading results are not investment advice and say nothing
+about future returns.
+
+**Why does AragonTrading insist on real market data?**
+Because the most expensive mistake in quant research is drawing conclusions from fake data. Real data is a hard
+constraint in the code: when OKX is unreachable the backend returns an explicit error and the UI says it cannot
+reach OKX — no random or mock candles are substituted. The only exception is an operator setting
+`ALLOW_CACHED_FALLBACK=true`, which falls back to real-but-stale cache and labels it in both a response header
+and a UI banner. Backtests, strategy comparison, paper trading and factor mining all need only OKX **public**
+endpoints — no API key, no private credentials.
+
+**How is AragonTrading different from TradingView or a backtest framework like backtrader?**
+It puts charting, strategy selection, backtesting, comparison and live paper trading into a single window
+instead of splitting them across a charting tool and a script. You click twice to run a backtest and get the
+buy/sell markers and equity curve drawn on the same chart; multi-strategy comparison overlays normalised
+equity curves. Beyond that it ships a factor-mining loop and AI trading behind deterministic gates, which
+neither generic backtest frameworks nor charting tools provide. It is a single-user local tool, not a hosted
+multi-tenant service.
 
 **What is AragonAgent?**
 An MIT-licensed AI coding agent for the terminal, shipped as two npm packages — a Claude Code / Codex
