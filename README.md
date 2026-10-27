@@ -5,12 +5,13 @@
 <h1 align="center">Hi, I'm Rui 👋</h1>
 
 <p align="center">
-  I build AI agents and small, fast tools that respect your data.<br />
-  <sub>AI Agent / 终端工具 / 本地优先应用 — 数据永远只属于你。</sub>
+  I build AI agents, self-hosted infrastructure, and small, fast tools that respect your data.<br />
+  <sub>AI Agent / 自托管网关 / 终端工具 / 本地优先应用 — 数据永远只属于你。</sub>
 </p>
 
 <p align="center">
-  🔭 Currently building <strong><a href="https://github.com/xdrshjr/AragonAgent">AragonAgent</a></strong> ·
+  🔭 Currently building <strong><a href="https://github.com/xdrshjr/AragonAgent">AragonAgent</a></strong>
+  and <strong><a href="https://github.com/xdrshjr/AragonRouter">AragonRouter</a></strong> ·
   💼 <a href="https://github.com/xdrshjr?tab=repositories">All repositories</a> ·
   ✉️ Reach me via issues & discussions
 </p>
@@ -52,6 +53,58 @@ zero-coupling TypeScript agent engine, and a stable machine-facing CLI contract 
 <p align="center">
   <code>npm i -g @aragon-agent/cli</code> &nbsp;→&nbsp; <code>aragon</code> &nbsp;·&nbsp;
   <a href="https://github.com/xdrshjr/AragonAgent">Read the docs →</a>
+</p>
+
+---
+
+## 🔀 AragonRouter — self-hosted dual-protocol relay
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/AragonRouter">
+    <img src="https://raw.githubusercontent.com/xdrshjr/AragonRouter/main/public/screenshot-01.png" width="820"
+         alt="AragonRouter console overview: request count, error rate, average latency and token usage cards, a usage line chart, and the latest proxied requests with model, latency, tokens and key prefix" />
+  </a>
+</p>
+
+**[AragonRouter](https://github.com/xdrshjr/AragonRouter)** — one self-hosted gateway for **both** Anthropic and
+OpenAI protocol traffic. Session login, API-key lifecycle, encrypted upstream credentials and usage
+observability ship in a single Next.js process backed by Node's built-in `node:sqlite` — no external database,
+no Docker, no third-party relay sitting in the path.
+把 Anthropic 与 OpenAI 两种协议的请求收敛到同一个自托管网关，单进程即带出 Key 生命周期、上游凭证加密与用量观测。
+
+- 🔀 **Two protocols, no translation** — `POST /api/v1/messages` (Anthropic) and `POST /api/v1/chat/completions` (OpenAI-compatible) relay independently; the route follows each provider's own `protocol`
+- 🌊 **Streaming that never buffers** — `stream: true` is piped chunk by chunk through a `TransformStream`, with SSE parsed on the side for token accounting; logs are still written when the client disconnects
+- 🔐 **Credentials never leave the gateway** — upstream keys are sealed with AES-256-GCM in SQLite and only ever surface as `sk-a…a1b2`; inbound `authorization` / `x-api-key` / `cookie` are stripped before forwarding
+- 📊 **Observability built in** — dark-first console (`/console`): overview, keys, providers with one-click connectivity test, log search and `24h` / `7d` / `30d` usage series
+- ⚖️ TypeScript strict · Node ≥ 22.5 · one process, one SQLite file · Windows one-command start/stop scripts
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/AragonRouter">
+    <img src="https://raw.githubusercontent.com/xdrshjr/AragonRouter/main/public/screenshot-02.png" width="620"
+         alt="AragonRouter providers page: upstream list with protocol, base URL, masked key, enabled toggle, health state and per-row Test / Edit / Delete" />
+  </a><br />
+  <sub>Providers page — protocol, base URL, masked key and health per upstream; traffic is served by the oldest enabled provider for that protocol.</sub>
+</p>
+
+<p align="center">
+  <a href="https://github.com/xdrshjr/AragonRouter">
+    <img src="https://img.shields.io/github/stars/xdrshjr/AragonRouter?style=social" alt="AragonRouter stars" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonRouter">
+    <img src="https://img.shields.io/badge/Next.js-15-3ecf8e" alt="Next.js 15" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonRouter">
+    <img src="https://img.shields.io/badge/Node.js-22.5%2B-339933" alt="Node.js 22.5+" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonRouter">
+    <img src="https://img.shields.io/badge/SQLite-node%3Asqlite-2f6f9f" alt="node:sqlite" />
+  </a>
+</p>
+
+<p align="center">
+  <code>powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start-dev.ps1</code><br />
+  <sub>one command: install → generate <code>.env.local</code> → pick a free port → start → print the console URL ·
+  an offline end-to-end test ships with its own stub upstream</sub>
 </p>
 
 ---
@@ -100,6 +153,14 @@ via `aragon exec`. It works with Anthropic, OpenAI, Google, or any OpenAI-compat
 
 **Is it free?**
 Yes — MIT-licensed, runs on Windows / macOS / Linux with Node ≥ 18. You only pay your own model provider.
+
+**What is AragonRouter?**
+A self-hosted API relay that puts Anthropic and OpenAI protocol traffic behind one gateway, so a pile of
+clients and SDKs share a single endpoint while your upstream keys stay yours. It stores API keys as SHA-256,
+seals upstream credentials with AES-256-GCM, streams SSE without buffering, and ships a dark-first console
+for keys, providers, logs and usage stats. One Next.js process on Node ≥ 22.5 with built-in `node:sqlite` —
+no external database, no Docker. Run it from `cmd.exe` with
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start-dev.ps1`.
 
 **What else does Rui build?**
 AragonTask (offline-first Android todos / ledger / memos), AragonMovie (multi-agent AI short-drama video
