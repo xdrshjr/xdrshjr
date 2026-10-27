@@ -84,7 +84,7 @@ The database, media library, generated audio and project files never leave your 
 | **AI models** | Bring your own key: any OpenAI-compatible endpoint (Qwen, Claude, GPT, GLM, DeepSeek) in separate chat / fast / video-cut / vision slots |
 | **Hardware** | FFmpeg + OpenCV, CPU only — no GPU required |
 | **Languages** | English and Chinese UI |
-| **License** | ISC — open source, commercial use allowed, no subscription or feature gate |
+| **License** | [ISC](https://github.com/xdrshjr/Ecliptrix/blob/main/LICENSE) — open source, commercial use allowed, no subscription or feature gate |
 
 - 🎞️ **Multi-track timeline** — video, image, audio and subtitle tracks with trimming, gaps, overlap detection, 2D/3D camera motion (Ken Burns) and one-step undo
 - 🖼️ **Canvas compositor preview** — the compositor is the *only* preview path, so what you see is what the exporter renders
@@ -106,7 +106,7 @@ The database, media library, generated audio and project files never leave your 
   <a href="https://github.com/xdrshjr/Ecliptrix">
     <img src="https://img.shields.io/github/stars/xdrshjr/Ecliptrix?style=social" alt="Ecliptrix stars" />
   </a>
-  <a href="https://github.com/xdrshjr/Ecliptrix">
+  <a href="https://github.com/xdrshjr/Ecliptrix/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-ISC-blue" alt="License: ISC" />
   </a>
   <a href="https://github.com/xdrshjr/Ecliptrix">
