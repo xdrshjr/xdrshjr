@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/xdrshjr/AragonAgent/main/logo/logo-circle.png" width="110" alt="AragonAgent logo" />
-</p>
-
 <h1 align="center">Hi, I'm Rui 👋</h1>
 
 <p align="center">
@@ -10,7 +6,7 @@
 </p>
 
 <p align="center">
-  🔭 Currently building <strong><a href="https://github.com/xdrshjr/AragonAgent">AragonAgent</a></strong>
+  🔭 Currently building <strong><a href="https://www.npmjs.com/package/@aragon-agent/cli">AragonAgent</a></strong>
   and <strong><a href="https://github.com/xdrshjr/AragonRouter">AragonRouter</a></strong> ·
   💼 <a href="https://github.com/xdrshjr?tab=repositories">All repositories</a> ·
   ✉️ Reach me via issues & discussions
@@ -20,17 +16,11 @@
 
 ## 🎯 Flagship — AragonAgent
 
-<p align="center">
-  <a href="https://github.com/xdrshjr/AragonAgent">
-    <img src="https://raw.githubusercontent.com/xdrshjr/AragonAgent/main/logo/screenshot.png" width="820"
-         alt="AragonAgent running in a terminal: banner, streaming TUI, tool cards, status bar with context usage and session cost" />
-  </a>
-</p>
-
-**[AragonAgent](https://github.com/xdrshjr/AragonAgent)** — an open-source coding agent that lives in your
-terminal, and the embeddable engine it runs on. A Claude&nbsp;Code / Codex-style interactive TUI, a
-zero-coupling TypeScript agent engine, and a stable machine-facing CLI contract — in one MIT monorepo.
-类 Claude&nbsp;Code / Codex 的轻量级 Agent 产品。
+**AragonAgent** — an open-source coding agent that lives in your terminal, published on npm as two packages:
+[`@aragon-agent/cli`](https://www.npmjs.com/package/@aragon-agent/cli), a Claude&nbsp;Code / Codex-style
+interactive TUI, and [`@aragon-agent/core`](https://www.npmjs.com/package/@aragon-agent/core), the
+zero-coupling TypeScript engine it runs on.
+类 Claude&nbsp;Code / Codex 的轻量级终端 Agent，以两个 npm 包分发：CLI 与可嵌入引擎。
 
 - 🖥️ **Three faces, one loop** — interactive TUI · Electron + Next.js desktop app · `aragon exec` NDJSON contract for scripts & CI
 - 🧩 **Embeddable engine** — `@aragon-agent/core`: dependency-injected, ESM-only TypeScript, bring your own tools, no framework coupling
@@ -45,14 +35,12 @@ zero-coupling TypeScript agent engine, and a stable machine-facing CLI contract 
   <a href="https://www.npmjs.com/package/@aragon-agent/core">
     <img src="https://img.shields.io/npm/v/@aragon-agent/core?label=%40aragon-agent%2Fcore&logo=npm" alt="npm @aragon-agent/core" />
   </a>
-  <a href="https://github.com/xdrshjr/AragonAgent">
-    <img src="https://img.shields.io/github/stars/xdrshjr/AragonAgent?style=social" alt="AragonAgent stars" />
-  </a>
 </p>
 
 <p align="center">
   <code>npm i -g @aragon-agent/cli</code> &nbsp;→&nbsp; <code>aragon</code> &nbsp;·&nbsp;
-  <a href="https://github.com/xdrshjr/AragonAgent">Read the docs →</a>
+  <a href="https://www.npmjs.com/package/@aragon-agent/cli"><code>@aragon-agent/cli</code> →</a> &nbsp;·&nbsp;
+  <a href="https://www.npmjs.com/package/@aragon-agent/core"><code>@aragon-agent/core</code> →</a>
 </p>
 
 ---
@@ -147,9 +135,10 @@ API key. 本地优先：待办 / 记账 / 备忘 / AI 智能体，数据仅存�
 ## ❓ Quick answers
 
 **What is AragonAgent?**
-An open-source (MIT) AI coding agent for the terminal — a Claude Code / Codex alternative you can run
-with `npm i -g @aragon-agent/cli`, embed as a TypeScript library (`@aragon-agent/core`), or drive from CI
-via `aragon exec`. It works with Anthropic, OpenAI, Google, or any OpenAI-compatible API key you already have.
+An MIT-licensed AI coding agent for the terminal, shipped as two npm packages — a Claude Code / Codex
+alternative you can run with `npm i -g @aragon-agent/cli`, embed as a TypeScript library
+(`@aragon-agent/core`), or drive from CI via `aragon exec`. It works with Anthropic, OpenAI, Google, or any
+OpenAI-compatible API key you already have.
 
 **Is it free?**
 Yes — MIT-licensed, runs on Windows / macOS / Linux with Node ≥ 18. You only pay your own model provider.
