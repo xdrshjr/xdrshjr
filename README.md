@@ -1,15 +1,21 @@
 <h1 align="center">Hi, I'm Rui 👋</h1>
 
 <p align="center">
-  I build AI agents, local-first creative tools, quant trading workbenches, self-hosted infrastructure, and small, fast apps that respect your data.<br />
-  <sub>AI Agent / 本地优先 AI 视频剪辑 / 量化交易工作台 / 自托管网关 / 终端工具 — 数据永远只属于你。</sub>
+  I build AI agents, local-first creative tools, quant trading workbenches, and self-hosted infrastructure — small, fast apps that respect your data.<br />
+  <sub>AI Agent（终端 + 桌面）/ 本地优先 AI 视频剪辑 / 量化交易工作台 / 自托管网关 — 数据永远只属于你。</sub>
 </p>
 
 <p align="center">
-  🔭 Building <strong><a href="https://github.com/xdrshjr/Ecliptrix">Ecliptrix</a></strong> ·
+  🎉 <strong><a href="https://github.com/xdrshjr/AragonAgent">AragonAgent</a> is now open source on GitHub</strong> — the terminal + desktop <strong>UI</strong> is MIT, the engine still ships from npm ·
+  <a href="https://github.com/xdrshjr/AragonAgent"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT licensed UI" /></a> ·
+  try it with <code>npm i -g @aragon-agent/cli</code> → <code>aragon</code>
+</p>
+
+<p align="center">
+  🔭 Building <strong><a href="https://github.com/xdrshjr/AragonAgent">AragonAgent</a></strong> <sub>(<a href="https://www.npmjs.com/package/@aragon-agent/cli">npm</a>)</sub> ·
+  <strong><a href="https://github.com/xdrshjr/Ecliptrix">Ecliptrix</a></strong> ·
   <strong><a href="https://github.com/xdrshjr/AragonTrading">AragonTrading</a></strong> ·
   <strong><a href="https://github.com/xdrshjr/AragonRouter">AragonRouter</a></strong> ·
-  <strong><a href="https://www.npmjs.com/package/@aragon-agent/cli">AragonAgent</a></strong> <sub>(npm)</sub> ·
   💼 <a href="https://github.com/xdrshjr?tab=repositories">All repositories</a> ·
   ✉️ Reach me via issues & discussions
 </p>
@@ -22,28 +28,37 @@ Four projects, four different jobs — pick the one that matches what you are tr
 
 | Project | What it is | Best for | Stack | Runs on |
 | --- | --- | --- | --- | --- |
-| ⌨️ **[AragonAgent](https://www.npmjs.com/package/@aragon-agent/cli)** | Terminal **AI coding agent**, shipped as `@aragon-agent/cli` + `@aragon-agent/core` | Running or embedding a Claude Code / Codex-style agent | TypeScript · Node ≥ 18 | Windows · macOS · Linux |
+| ⌨️ **[AragonAgent](https://github.com/xdrshjr/AragonAgent)**<br /><sub>npm: [`@aragon-agent/cli`](https://www.npmjs.com/package/@aragon-agent/cli) · [`@aragon-agent/core`](https://www.npmjs.com/package/@aragon-agent/core) · [`@aragon-agent/tui`](https://www.npmjs.com/package/@aragon-agent/tui)</sub> | Terminal **and** desktop **AI coding agent** — the UI layer (`tui`, `desktop`, docs) is open source under MIT; the engine and CLI host are closed source, published to npm (`core` 0.2.63, `cli` 0.6.51, `tui` 0.0.4) | Running or embedding a Claude Code / Codex-style agent on your own machine | TypeScript · Ink (React) TUI · Electron 45 · React 18 · Node ≥ 18 | CLI/TUI: Windows · macOS · Linux · Desktop: Windows (NSIS installer) |
 | 🎬 **[Ecliptrix](https://github.com/xdrshjr/Ecliptrix)** | Open-source, local-first **AI video editor** — script → footage → voice-over → subtitles → timeline → export | Solo creators producing narrated videos without a subscription editor | Electron 33 · Next.js 15 · React 19 · FastAPI · FFmpeg · SQLite | Windows 10/11 x64 |
 | 📈 **[AragonTrading](https://github.com/xdrshjr/AragonTrading)** | Open-source, local-first **multi-strategy quant workbench** — OKX real market data, backtests, paper trading, factor mining, gated AI trading | Testing whether a strategy idea survives real data, fees and slippage before risking anything | Next.js 14 · FastAPI · Python 3.11 · Electron · SQLite · lightweight-charts | Windows · macOS · Linux · Docker |
 | 🔀 **[AragonRouter](https://github.com/xdrshjr/AragonRouter)** | Self-hosted **dual-protocol API relay** for Anthropic + OpenAI traffic, with keys, logs and usage stats | Giving many clients one endpoint while keeping upstream keys yours | Next.js 15 · TypeScript · `node:sqlite` | Node ≥ 22.5 |
 
-<sub>Editing video → **Ecliptrix** · researching a trading strategy → **AragonTrading** · relaying model API traffic → **AragonRouter** · working in the terminal → **AragonAgent**.</sub>
+<sub>Running an agent in your terminal or on the desktop → **AragonAgent** · editing video → **Ecliptrix** · researching a trading strategy → **AragonTrading** · relaying model API traffic → **AragonRouter**.</sub>
 
 ---
 
 ## 🎯 Flagship — AragonAgent
 
-**AragonAgent** — an open-source coding agent that lives in your terminal, published on npm as two packages:
-[`@aragon-agent/cli`](https://www.npmjs.com/package/@aragon-agent/cli), a Claude&nbsp;Code / Codex-style
-interactive TUI, and [`@aragon-agent/core`](https://www.npmjs.com/package/@aragon-agent/core), the
-zero-coupling TypeScript engine it runs on.
-类 Claude&nbsp;Code / Codex 的轻量级终端 Agent，以两个 npm 包分发：CLI 与可嵌入引擎。
+**AragonAgent** — a coding agent that lives in your terminal, and for the first time the code is yours to read:
+**[xdrshjr/AragonAgent](https://github.com/xdrshjr/AragonAgent)** is public on GitHub under the **MIT** license
+(`main` branch). My first open-source project: an Ink/React terminal UI, an Electron + React desktop shell, and a
+complete developer documentation site — all browsable, all versioned in the open.
+仓库已公开：`packages/tui`、`packages/desktop` 与文档站以 MIT 开源，引擎与 CLI 宿主仍闭源、通过 npm 分发。
 
-- 🖥️ **Three faces, one loop** — interactive TUI · Electron + Next.js desktop app · `aragon exec` NDJSON contract for scripts & CI
-- 🧩 **Embeddable engine** — `@aragon-agent/core`: dependency-injected, ESM-only TypeScript, bring your own tools, no framework coupling
-- 🔌 **Bring your own model** — Anthropic / OpenAI / Google / any OpenAI-compatible endpoint
-- 🤝 **Agent teams** — parallel subagents, plan mode, on-disk skills, durable sessions, supervised background services
-- ⚖️ MIT · Node ≥ 18 · Windows / macOS / Linux
+**What is open, and what is not.** The public repository is the **UI layer** — `packages/tui`, `packages/desktop`
+and `docs/guide-doc`. The **engine** (`@aragon-agent/core`) and the **CLI host** that provides the `aragon`
+command (`@aragon-agent/cli`) remain **closed source** and are consumed as npm packages, so "open source" here
+means the front ends and the docs, not the whole agent.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/xdrshjr/AragonAgent/main/logo/logo-circle.png" width="96" alt="AragonAgent logo" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/xdrshjr/AragonAgent/main/packages/desktop/public/image/screen-shot-01.png" width="760" alt="AragonAgent desktop app: icon rail and session list on the left, a conversation with live tool cards in the centre, the composer at the bottom" />
+  <br />
+  <sub>The desktop app — one engine, one config, one session store, shared with the terminal.</sub>
+</p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@aragon-agent/cli">
@@ -52,12 +67,62 @@ zero-coupling TypeScript engine it runs on.
   <a href="https://www.npmjs.com/package/@aragon-agent/core">
     <img src="https://img.shields.io/npm/v/@aragon-agent/core?label=%40aragon-agent%2Fcore&logo=npm" alt="npm @aragon-agent/core" />
   </a>
+  <a href="https://github.com/xdrshjr/AragonAgent">
+    <img src="https://img.shields.io/github/stars/xdrshjr/AragonAgent?style=social" alt="GitHub stars for AragonAgent" />
+  </a>
+  <a href="https://github.com/xdrshjr/AragonAgent">
+    <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT license" />
+  </a>
 </p>
 
+- 🖥️ **Interactive TUI** — the terminal coding agent in Ink/React: streaming answers, live tool cards, approvals,
+  slash commands. 452 files, 178 test files, 2,484 passing tests in `packages/tui`.
+- 🪟 **Electron desktop app, same loop** — a third front end on the same engine rather than a fork: it reuses
+  `@aragon-agent/core`, `@aragon-agent/tui` and the cli's controller, config and sessions. Both faces read and
+  write `~/.aragon-agent`, so a model, key or theme set in the terminal is already there when the app opens.
+- ⌨️ **`aragon exec` NDJSON contract** — non-interactive and line-oriented: one JSON event per line, same tools,
+  same approvals, so scripts and CI can drive the agent without the TUI.
+- 🔌 **Bring your own model** — Anthropic / OpenAI / Google / any OpenAI-compatible endpoint.
+- 🤝 **Agent teams** — parallel subagents, plan mode, on-disk skills, durable sessions you can resume, and
+  supervised background services.
+- 🧰 **Supervision, not fire-and-forget** — long-running jobs the agent starts are watched and reported back.
+- 📚 **Docs that version with the code** — `docs/guide-doc` is a full developer documentation site, shipped
+  prebuilt in the repository.
+
+### Use it — npm
+
+```bash
+npm i -g @aragon-agent/cli
+aragon
+```
+
+### Read or build it — source
+
+```bash
+git clone https://github.com/xdrshjr/AragonAgent.git
+cd AragonAgent
+npm install
+npm run build -w packages/desktop
+pack-desktop.cmd
+```
+
+`pack-desktop.cmd` produces the Windows NSIS installer in one step — that is the only platform installer built
+today (no macOS/Linux installer and no update feed yet). The step-by-step is in the
+[packaging guide](https://github.com/xdrshjr/AragonAgent/blob/main/packages/desktop/docs/packaging-desktop.md).
+
+Node ≥ 18 for the published `cli` / `core` / `tui` packages; Node ≥ 20 for the desktop dev workspace.
+
+| Path | What it is | Stack |
+| --- | --- | --- |
+| [`packages/tui`](https://github.com/xdrshjr/AragonAgent/tree/main/packages/tui) | The terminal coding-agent UI — streaming transcript, tool cards, approvals, slash commands | TypeScript · Ink · React |
+| [`packages/desktop`](https://github.com/xdrshjr/AragonAgent/tree/main/packages/desktop) | Electron desktop shell sharing the terminal's config and sessions; NSIS installer + `pack-desktop.cmd` | Electron 45 · React 18 · TypeScript |
+| [`docs/guide-doc`](https://github.com/xdrshjr/AragonAgent/tree/main/docs/guide-doc) | The full developer documentation site, shipped prebuilt | Markdown docs · static site |
+
 <p align="center">
-  <code>npm i -g @aragon-agent/cli</code> &nbsp;→&nbsp; <code>aragon</code> &nbsp;·&nbsp;
-  <a href="https://www.npmjs.com/package/@aragon-agent/cli"><code>@aragon-agent/cli</code> →</a> &nbsp;·&nbsp;
-  <a href="https://www.npmjs.com/package/@aragon-agent/core"><code>@aragon-agent/core</code> →</a>
+  <a href="https://github.com/xdrshjr/AragonAgent"><b>Repo</b></a> ·
+  <a href="https://github.com/xdrshjr/AragonAgent/blob/main/docs/guide-doc/README.md">Docs site</a> ·
+  <a href="https://www.npmjs.com/package/@aragon-agent/cli">npm <code>@aragon-agent/cli</code></a> ·
+  <a href="https://www.npmjs.com/package/@aragon-agent/core">npm <code>@aragon-agent/core</code></a>
 </p>
 
 ---
@@ -303,6 +368,50 @@ API key. 本地优先：待办 / 记账 / 备忘 / AI 智能体，数据仅存�
 
 ## ❓ Quick answers
 
+**What is AragonAgent?**
+AragonAgent is a coding agent you drive from a terminal, plus a Windows desktop app built around the same
+engine — the Claude Code / Codex slot in a terminal-first toolchain, pointed at whatever model provider you
+bring yourself. The terminal UI lives in `packages/tui` (Ink/React, TypeScript, on npm as
+`@aragon-agent/tui`), the desktop shell in `packages/desktop` (Electron 45 + React 18, NSIS installer), and
+both are public in [xdrshjr/AragonAgent](https://github.com/xdrshjr/AragonAgent). It reads and edits files,
+runs commands from the terminal and keeps its session history on your machine, like other terminal agents.
+
+**Is AragonAgent open source?**
+Partly — open-source UI, closed-source engine, one MIT-licensed front-end layer you can read, fork, build
+and package. [xdrshjr/AragonAgent](https://github.com/xdrshjr/AragonAgent) is MIT-licensed and contains the
+terminal UI (`packages/tui`), the Electron desktop shell (`packages/desktop`) and a full developer
+documentation site under `docs/guide-doc`.
+The engine `@aragon-agent/core` and the CLI host `@aragon-agent/cli` are closed source: they are distributed
+only as npm packages —
+[@aragon-agent/core](https://www.npmjs.com/package/@aragon-agent/core) 0.2.63 and
+[@aragon-agent/cli](https://www.npmjs.com/package/@aragon-agent/cli) 0.6.51 — so their source is not in that
+repository.
+
+**Is AragonAgent free?**
+Yes. The UI layer is MIT-licensed on GitHub, the `aragon` CLI and the engine install free from npm, and
+there is no subscription, seat count or account — you only pay the model provider you point it at.
+
+**How do I install AragonAgent?**
+Two paths. For the terminal agent install Node ≥ 18, then `npm i -g @aragon-agent/cli` and start it with
+`aragon` — that pulls the engine (`@aragon-agent/core`) in as a dependency. For the desktop app clone
+[xdrshjr/AragonAgent](https://github.com/xdrshjr/AragonAgent), run `npm install` and
+`npm run build -w packages/desktop`, then `pack-desktop.cmd` (or `pack-desktop.ps1`) to produce the Windows
+NSIS installer; the step-by-step guide is
+[packaging-desktop.md](https://github.com/xdrshjr/AragonAgent/blob/main/packages/desktop/docs/packaging-desktop.md).
+
+**Does AragonAgent work offline? Which models can I use? Where does my code go?**
+You bring the model: Anthropic, OpenAI, Google, or any OpenAI-compatible endpoint, with your own API key.
+Config and session history stay on your machine in `~/.aragon-agent` — the desktop app reads the same file
+the terminal does — and nothing is proxied through a service of mine; your key goes straight to the provider
+you configured. It is not fully offline: model calls need network access. Reading the repo, building it and
+packaging the desktop app all work without a network.
+
+**Is there a Windows desktop app?**
+Yes — `packages/desktop` builds a Windows NSIS installer, and `pack-desktop.cmd` / `pack-desktop.ps1`
+package it in one step. Two caveats, both real: the build is unsigned (no code-signing certificate), so
+Windows SmartScreen will warn on first launch, and there is no auto-update feed yet — a new build means
+reinstalling by hand. There is no VS Code extension.
+
 **What is Ecliptrix?**
 Ecliptrix (灵蚀创影) is an open-source, local-first AI video editor desktop app for Windows. You give it a
 script; it searches stock footage, generates or downloads what is missing, synthesises the voice-over,
@@ -353,15 +462,6 @@ buy/sell markers and equity curve drawn on the same chart; multi-strategy compar
 equity curves. Beyond that it ships a factor-mining loop and AI trading behind deterministic gates, which
 neither generic backtest frameworks nor charting tools provide. It is a single-user local tool, not a hosted
 multi-tenant service.
-
-**What is AragonAgent?**
-An MIT-licensed AI coding agent for the terminal, shipped as two npm packages — a Claude Code / Codex
-alternative you can run with `npm i -g @aragon-agent/cli`, embed as a TypeScript library
-(`@aragon-agent/core`), or drive from CI via `aragon exec`. It works with Anthropic, OpenAI, Google, or any
-OpenAI-compatible API key you already have.
-
-**Is AragonAgent free?**
-Yes — MIT-licensed, runs on Windows / macOS / Linux with Node ≥ 18. You only pay your own model provider.
 
 **What is AragonRouter?**
 A self-hosted API relay that puts Anthropic and OpenAI protocol traffic behind one gateway, so a pile of
